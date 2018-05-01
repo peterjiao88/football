@@ -1,0 +1,54 @@
+package Game;
+
+import java.util.LinkedList;
+//为单循环赛赛程
+public class GamePlan1{
+    private int num; 
+    // 队伍数
+    
+    //采用数据结构链表知识
+    private LinkedList<Integer> list = new LinkedList<Integer>();
+
+    public GamePlan1(int n) {
+        this.num = n;
+        initial();
+    }
+
+    private void initial() {
+
+            for (int i = 0; i < num; i++) {
+                list.add(i + 1);
+            }
+            list.add(0);
+        }
+
+
+    public void print() {
+        for (int i = 0; i < list.size() - 1; i++) {
+            System.out.println("4月" + (i + 1) + "日");
+            //初步计算 单循环大约十七天可以完成
+            for (int j = 0; j < list.size() / 2; j++) {
+                System.out.println(list.get(j) + "--"
+                        + list.get(list.size() - 1 - j));
+            }
+            int temp = list.pollLast();  //得到最后一个值
+            list.add(1, temp);//将最后一个值放在List的第二个位置
+
+        }
+    }
+    
+}
+
+package Game;
+
+//打印输出
+
+public class GamePlanShow {
+    public static void main(String[] args) {
+     //实例化GamePlan对象
+        GamePlan1 t = new GamePlan1(18);
+        t.print();
+        
+    }
+    
+}
